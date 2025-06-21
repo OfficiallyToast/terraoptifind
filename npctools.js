@@ -86,7 +86,7 @@ function bestBiomesForGroup(group) {
     // Skip any biome configuration where the truffle is improperly housed
     // Technically mods (like Fargo's) allow us to misplace the truffle
     // but it doesn't really matter that much
-    if (!allowMisplacedTruffle && group.includes("Truffle") && (!biome.includes("Mushroom") || biome.includes("Caverns"))) { continue; }
+    if (!allowMisplacedTruffle && group.includes("Truffle") && (!biome.includes("Mushroom") || biome.includes("Cavern"))) { continue; }
     let thisBiomeHappiness = 0.0;
     for (const person of group) {
       thisBiomeHappiness += oneHappiness(person, biome, group);
