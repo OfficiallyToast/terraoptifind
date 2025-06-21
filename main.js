@@ -70,7 +70,7 @@ function checkBiomePylon(checkbox) {
 
 function includePylonBiomes() {
   for (const biome of baseBiomes) {
-    document.getElementById(biome + "Checkbox").checked = true;
+    document.getElementById(biome + "PylonCheckbox").checked = true;
   }
 }
 
