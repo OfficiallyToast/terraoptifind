@@ -84,9 +84,9 @@ function genNPCtable() {
     return output;
   };
   header.replaceChildren(
-      td('NPC name', 'th'),
-      td('Include this NPC?', 'th'),
-      td('NPC importance (higher = more important)', 'th'),
+    td('NPC name', 'th'),
+    td('Include this NPC?', 'th'),
+    td('NPC importance (higher = more important)', 'th'),
   );
   let enableBox = (person) => {
     let output = document.createElement('input');
@@ -216,10 +216,10 @@ function showAllResults(data) {
     let solu = sortedData[i];
     output.innerHTML += "Above has:<br>";
     output.innerHTML += prevsolu.filter(x => !solu.map(y => JSON.stringify(y[0])).includes(JSON.stringify(x[0])))
-        .map(x => x[0].join(", ")).join("<br>") + "<br>";
+      .map(x => x[0].join(", ")).join("<br>") + "<br>";
     output.innerHTML += "<br>Below has:<br>";
     output.innerHTML += solu.filter(x => !prevsolu.map(y => JSON.stringify(y[0])).includes(JSON.stringify(x[0])))
-        .map(x => x[0].join(", ")).join("<br>") + "<br>";
+      .map(x => x[0].join(", ")).join("<br>") + "<br>";
     genResultsTable(solu);
   }
 }
@@ -280,7 +280,7 @@ function startSearch() {
       peopleWeCanUse.push(person);
       // don't allow non-positive values for the weighting
       npcdict[person]["weighting"] = Math.max(Number.EPSILON,
-          document.getElementById(person + "Weighting").value);
+        document.getElementById(person + "Weighting").value);
     }
   }
   let minBiomes = [];
@@ -298,15 +298,6 @@ function startSearch() {
   let maxGroupSize = document.getElementById("maxGroupSize").value;
 
   let biomes = biomes1;
-  if (document.getElementById("useBiomes2Natural").checked) {
-    biomes = biomes.concat(biomes2Natural);
-  }
-  if (document.getElementById("useBiomes2Easy").checked) {
-    biomes = biomes.concat(biomes2Easy, biomes3Easy);
-  }
-  if (document.getElementById("useBiomes2Rest").checked) {
-    biomes = biomes.concat(biomes2Rest, biomes3Rest, biomes4Rest, biomes5Rest, biomes6Rest, biomes7Rest)
-  }
 
   for (const biome of baseBiomes) {
     if (!document.getElementById(biome + "IncludeCheckbox").checked) {

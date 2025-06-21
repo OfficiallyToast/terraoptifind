@@ -1,94 +1,83 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./styles.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
 
-<body>
-  <div>
-    <label for="minGroupSize">Min num of NPCs per group:</label>
-    <input type="number" id="minGroupSize" min="1" max="25" value="1" onchange="updateNumPossibleGroups()">
-  </div>
-  <div>
-    <label for="maxGroupSize">Max num of NPCs per group:</label>
-    <input type="number" id="maxGroupSize" min="1" max="25" value="4" onchange="updateNumPossibleGroups()">
-  </div>
+  <body>
+    <div>
+      <label for="minGroupSize">Min num of NPCs per group:</label>
+      <input type="number" id="minGroupSize" min="1" max="25" value="1"
+        onchange="updateNumPossibleGroups()">
+    </div>
+    <div>
+      <label for="maxGroupSize">Max num of NPCs per group:</label>
+      <input type="number" id="maxGroupSize" min="1" max="25" value="4"
+        onchange="updateNumPossibleGroups()">
+    </div>
 
-  <label>Number of possible groups:
-    <output id="numPossibleGroups"></output>
-  </label>
+    <label>Number of possible groups:
+      <output id="numPossibleGroups"></output>
+    </label>
 
-  <div>
-    <div id="biomeTableDiv"></div>
-  </div>
+    <div>
+      <div id="biomeTableDiv"></div>
+    </div>
 
-  <button onclick="includePylonBiomes()">Select pylon biomes</button>
+    <button onclick="includePylonBiomes()">Select pylon biomes</button>
 
-  <label>Use naturally occuring hybrid biomes
-    <input type="checkbox" id="useBiomes2Natural" checked />
-  </label>
+    <label>Allow Truffle to be placed outside of his natural spawn conditions
+      <input type="checkbox" id="allowMisplacedTruffle"
+        onchange="event => allowMisplacedTruffle = event.target.checked" />
+    </label>
 
-  <label>Use (easily) creatable hybrid biomes
-    <input type="checkbox" id="useBiomes2Easy" checked />
-  </label>
+    <div id="quickButtons"></div>
 
-  <label>Use the other feasible hybrid biomes
-    <input type="checkbox" id="useBiomes2Rest" checked />
-  </label>
+    <div style="overflow:scroll; height:15em">
+      <div id="npcTableDiv"></div>
+    </div>
 
-  <label>Allow Truffle to be placed outside of his natural spawn conditions
-    <input type="checkbox" id="allowMisplacedTruffle"
-      onchange="event => allowMisplacedTruffle = event.target.checked" />
-  </label>
+    <div>
+      <button id="start" onclick="startSearch()">Start search</button>
+    </div>
 
-  <div id="quickButtons"></div>
+    <label>Branches pruned:
+      <output id="branchesPruned">0</output>
+    </label>
 
-  <div style="overflow:scroll; height:15em">
-    <div id="npcTableDiv"></div>
-  </div>
+    <label>Tentative solutions improved on:
+      <output id="newBestSolutionsFound">0</output>
+    </label>
 
+    <label>Cache generation progress:
+      <output id="cacheGenPercent">0.00%</output>
+    </label>
 
-  <div>
-    <button id="start" onclick="startSearch()">Start search</button>
-  </div>
+    <label>Time elapsed to generate cache (seconds):
+      <output id="timeElapsedCache">0.000</output>
+    </label>
 
-  <label>Branches pruned:
-    <output id="branchesPruned">0</output>
-  </label>
+    <label>Time elapsed to find best solution(s) (seconds):
+      <output id="timeElapsedSearch">0.000</output>
+    </label>
 
-  <label>Tentative solutions improved on:
-    <output id="newBestSolutionsFound">0</output>
-  </label>
+    <div>
+      <p>Equally good solutions are listed in order of discovery.</p>
+    </div>
 
-  <label>Cache generation progress:
-    <output id="cacheGenPercent">0.00%</output>
-  </label>
+    <div>
+      <div id="resultTableDiv"></div>
+    </div>
 
-  <label>Time elapsed to generate cache (seconds):
-    <output id="timeElapsedCache">0.000</output>
-  </label>
+    <div style="padding-bottom:10em"></div>
 
-  <label>Time elapsed to find best solution(s) (seconds):
-    <output id="timeElapsedSearch">0.000</output>
-  </label>
-
-  <div>
-    <p>Equally good solutions are listed in order of discovery.</p>
-  </div>
-
-  <div>
-    <div id="resultTableDiv"></div>
-  </div>
-
-  <div style="padding-bottom:10em"></div>
-
-  <script src="npcdata.js"></script>
-  <script src="npctools.js"></script>
-  <script src="main.js"></script>
-</body>
+    <script src="npcdata.js"></script>
+    <script src="npctools.js"></script>
+    <script src="main.js"></script>
+  </body>
 
 </html>
